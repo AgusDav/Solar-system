@@ -14,11 +14,12 @@ SUN = (255, 202, 51)
 EARTH = (27, 212, 233)
 MARS = (233, 57, 27)
 MERCURY = (229, 227, 219)
+JUPITER = (189, 179, 139)
 
 FONT = pygame.font.SysFont("comicsans", 16)
 
 #   CONSTANTES CUERPOS CELESTES
 AU = 149.6e6 * 1000 #Astronomical Unit: Distancia aprox entre la Tierra y el Sol (en metros). 149.6 millones km
 G = 6.67428e-11     #Constante gravitacional
-SCALE = 250 / AU    #1AU = 100 pixels
+SCALE = 100 / AU    #1AU = 40 pixels
 TIMESTEP = 3600*24  #1 dia 

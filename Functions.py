@@ -8,23 +8,26 @@ pygame.init()
 def initialize_bodies():
     #Crea los cuerpos celestes y setea sus valores
 
-    sun = CelestialBody("Sol", 0, 0, 30, SUN, 1.98892 * 10**30)        #Masa en kg
+    sun = CelestialBody("Sol", 0, 0, 25, SUN, 1.98892 * 10**30)        #Masa en kg
     sun.sun = True
 
     #A todos los planetas se les asigna una velocidad inicial para que empiecen a hacer la elipse, sino se van de la imagen.
-    earth = CelestialBody("Tierra",AU, 0, 16, EARTH, 5.9742 * 10**24)
+    earth = CelestialBody("Tierra",AU, 0, 10, EARTH, 5.9742 * 10**24)
     earth.y_vel = 29.783 * 1000 
 
-    mars = CelestialBody("Marte", 1.524 * AU, 0, 12, MARS, 6.39 * 10**23)
-    mars.y_vel = 24.077 * 1000
+    mars = CelestialBody("Marte", -1.524 * AU, 0, 8, MARS, 6.39 * 10**23)
+    mars.y_vel = -24.077 * 1000
 
-    mercury = CelestialBody("Mercurio", 0.387 * AU, 0, 8, MERCURY, 3.30 * 10**23)
+    mercury = CelestialBody("Mercurio", -0.387 * AU, 0, 6, MERCURY, 3.30 * 10**23)
     mercury.y_vel = 47.4 * 1000
 
-    venus = CelestialBody("Venus", 0.723 * AU, 0, 14, VENUS, 4.8685 * 10**24)
+    venus = CelestialBody("Venus", -0.723 * AU, 0, 10, VENUS, 4.8685 * 10**24)
     venus.y_vel = 35.02 * 1000
 
-    bodies = [sun, mercury, venus, earth, mars]
+    jupiter = CelestialBody("Jupiter", 5.203 * AU, 0, 20, JUPITER, 1.89 * 10**27) 
+    jupiter.y_vel = 13.07 * 1000
+
+    bodies = [sun, mercury, venus, earth, mars, jupiter]
 
     return bodies
 

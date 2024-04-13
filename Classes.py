@@ -12,7 +12,6 @@ class CelestialBody:
         self.mass = mass
         self.x = x_ini      #metros
         self.y = y_ini      #metros
-        self.apoapsis_distance = math.sqrt(self.x_ini ** 2 + self.y_ini ** 2)     #La distancia máxima del sol que está el cuerpo celeste
         self.lap = 0        #Vueltas al sol
 
         self.orbit = []
@@ -43,13 +42,12 @@ class CelestialBody:
     def update_position(self, bodies):
         total_fx = total_fy = 0
         for body in bodies:
-            if(self.sun != 1):
-                if self == body:        #Cuando se encuentra a si mismo en el array lo saltea para que no de error de calculo
-                    continue
+            if self == body:        #Cuando se encuentra a si mismo en el array lo saltea para que no de error de calculo
+                continue
 
-                fx, fy = self.attraction(body)
-                total_fx += fx
-                total_fy += fy
+            fx, fy = self.attraction(body)
+            total_fx += fx
+            total_fy += fy
 
         self.x_vel += total_fx * TIMESTEP / self.mass 
         self.y_vel += total_fy * TIMESTEP / self.mass 
@@ -58,12 +56,6 @@ class CelestialBody:
         self.y += self.y_vel * TIMESTEP
         self.orbit.append((self.x, self.y))
 
- #       if((self.x, self.y) == (self.x_ini, self.y_ini)):
-#            self.lap += 1
-
-        distance_from_sun = math.sqrt(self.x ** 2 + self.y ** 2)
-        if distance_from_sun > self.apoapsis_distance:
-            self.apoapsis_distance = distance_from_sun  
-            self.lap += 1   
-
+        if(self.orbit[len(self.orbit) - 1][1] == (SCALE * HEIGHT) / 2):
+            self.lap += 1
         
